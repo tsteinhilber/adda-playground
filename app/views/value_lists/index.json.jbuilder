@@ -1,0 +1,1 @@
+json.array! @value_lists, partial: 'value_lists/value_list', as: :value_list

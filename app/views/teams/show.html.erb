@@ -1,0 +1,110 @@
+<nav class="breadcrumb">
+  <a class="breadcrumb-item" href="#">Home</a>
+  <a class="breadcrumb-item" href="#">Admin</a>
+  <%= link_to 'Teams', teams_path, class: 'breadcrumb-item' %>
+  <span class="breadcrumb-item active"><%= @team.name %></span>
+</nav>
+
+<div class="row">
+  <div class="col-sm-6 col-xs-12">
+    <h1 class="display-4"><%= @team.name %></h1>
+    <h4><%= @team.company.name %></h4>
+    <h6 class="text-muted">
+      <%= @team.category %>
+    </h6>
+  </div>
+  <div class="col-sm-6 col-xs-12 text-xs-right">
+    <%= link_to 'Edit Team', edit_team_path(@team), class: 'btn btn-outline-secondary' %>
+    <%= link_to 'Back', teams_path, class: 'btn btn-outline-secondary' %>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+
+  <!--left column-->
+  <div class="col-sm-6 col-xs-12">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#members" role="tab">Members</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#add_member" role="tab">Add Member</a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane active" id="members" role="tabpanel">
+        <br>
+        <!--members-->
+        <div class="list-group">
+          <% @team.memberships.each do |member| %>
+              <div class="list-group-item">
+                <%= link_to 'Remove', team_membership_path(@team, member), method: :delete, remote: true, class: "text-xs-right" %>
+                <h5 class="list-group-item-heading"><%= member.user.name_full %></h5>
+                <p class="list-group-item-text"><%= member.user.email %> | <%= member.id %> | and other stuff</p>
+              </div>
+          <% end %>
+        </div>
+
+      </div>
+      <div class="tab-pane" id="add_member" role="tabpanel">
+        <br>
+        <!--users-->
+        <div class="list-group">
+          <% @users.each do |user| %>
+              <div class="list-group-item">
+                <h5 class="list-group-item-heading"><%= user.name_full %></h5>
+                <p class="list-group-item-text"><%= user.email %> | and other stuff</p>
+                <div class="text-xs-right">
+                  <%= link_to "Add", {:controller => "teams", :action => "add_member", :team => @team.id, :user => user.id }, class: "btn btn-outline-secondary" %>
+                </div>
+              </div>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div><!-- /left-column -->
+
+  <!--right column-->
+  <div class="col-sm-6 col-xs-12">
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Artists</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Add Artist</a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane active" id="home" role="tabpanel">
+        <br>
+        <!--artists-->
+        <div class="list-group">
+          <% @team.artists.each do |artist| %>
+              <div class="list-group-item">
+                <h5 class="list-group-item-heading"><%= artist.name_full %></h5>
+                <p class="list-group-item-text"><%= artist.category %></p>
+              </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="tab-pane" id="profile" role="tabpanel">
+        <br>
+        <%= render 'shared/artist_search', btn_add: true, email: false, list: true, local_path: team_path, btn_profile: false, search: true %>
+      </div>
+    </div>
+
+  </div><!-- /right-column -->
+</div>
+
+

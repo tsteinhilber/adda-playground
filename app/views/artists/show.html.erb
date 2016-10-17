@@ -1,0 +1,62 @@
+<h1 class="display-4"><%= @artist.name_full %></h1>
+<!--<hr>-->
+<div class="row">
+  <!--left column-->
+  <div class="col-sm-6 col-xs-12">
+    <!--artist details-->
+    <table class="table">
+      <tr>
+        <th>First Name</th>
+        <td><%= @artist.name_first %></td>
+      </tr>
+      <tr>
+        <th>Last Name</th>
+        <td><%= @artist.name_last %></td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><%= @artist.email %></td>
+      </tr>
+      <tr>
+        <th>Website</th>
+        <td><%= @artist.website %></td>
+      </tr>
+        <th>Category</th>
+        <td><%= @artist.category %></td>
+      <tr>
+      </tr>
+        <th>Active</th>
+        <td><%= @artist.active %></td>
+      <tr>
+      </tr>
+        <th>Date Start</th>
+        <td><%= @artist.date_start %></td>
+      </tr>
+    </table>
+  </div>
+
+  <!--right column-->
+  <div class="col-sm-6 col-xs-12">
+
+    <% if @artist.teams.size > 0 %>
+    <!--members-->
+    <div class="list-group">
+      <p class="list-group-item disabled">Teams</p>
+      <% @artist.teams.each do |team| %>
+          <div class="list-group-item">
+            <h5 class="list-group-item-heading"><%= team.name %></h5>
+            <p class="list-group-item-text"><%= team.category %></p>
+          </div>
+      <% end %>
+    </div>
+    <% end %>
+
+  </div><!--/col -->
+
+</div><!-- /row -->
+
+
+<hr>
+
+<%= link_to 'Edit', edit_artist_path(@artist), class: 'btn btn-outline-secondary' %>
+<%= link_to 'Back', :back, class: 'btn btn-outline-secondary' %>

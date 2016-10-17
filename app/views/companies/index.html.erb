@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-xs-6">
+    <h1 class="display-4">Companies</h1>
+    <h6 class="text-muted">
+      <% if @companies && @companies.all.size > 0 %>
+          <%= @companies.all.size %> records found
+      <% end %>
+    </h6>
+  </div>
+  <div class="col-xs-6 text-xs-right">
+    <%= link_to 'New Company', new_company_path, class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Name Legal</th>
+    <th>Website</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @companies.each do |company| %>
+      <tr>
+        <td><%= company.name %></td>
+        <td><%= company.name_legal %></td>
+        <td><%= company.website %></td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Edit buttons">
+            <%= link_to 'Show', company, class: "btn btn-secondary btn-sm" %>
+            <%= link_to 'Edit', edit_company_path(company), class: "btn btn-secondary btn-sm" %>
+            <%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary btn-sm" %>
+          </div>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

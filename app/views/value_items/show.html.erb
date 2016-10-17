@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>List:</strong>
+  <%= @value_item.value_list.name %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @value_item.name %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @value_item.position %>
+</p>
+
+<%= link_to 'Edit', edit_value_list_value_item_path(@value_item) %> |
+<%= link_to 'Back', :back %>

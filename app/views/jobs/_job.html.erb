@@ -1,0 +1,13 @@
+<div class="list-group-item list-group-item-action">
+  <div class="button-group pull-xs-right">
+    <%= link_to 'Job', job_path(job), class: "btn btn-outline-primary btn-sm" %>
+  </div>
+  <h5 class="list-group-item-heading"><%= job.job_number %></h5>
+  <% if job.job_client %>
+      <small><%= job.job_client.name %></small> |
+  <% end %>
+  <% if job.job_contact %>
+      <small><%= job.job_contact.name_full %></small>
+      <br>
+  <% end %>
+</div>

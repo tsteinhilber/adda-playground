@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-xs-6">
+    <h1 class="display-4">Artists</h1>
+    <h6 class="text-muted">
+      <% if @artists && @artists.all.size > 0 %>
+          <%= @artists.all.size %> records found
+      <% end %>
+    </h6>
+  </div>
+  <div class="col-xs-6 text-xs-right">
+    <%= link_to 'New Artist', new_artist_path, class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<!--SEARCH FORM-->
+<%= form_tag artists_path, :method => 'get' do %>
+    <div class="input-group">
+      <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search Artists' %>
+      <span class="input-group-btn">
+        <%= submit_tag "Search", class: 'btn btn-outline-secondary' %>
+      </span>
+    </div>
+<% end %>
+
+<hr>
+
+<!--SEARCH RESULTS-->
+<% if @artists && @artists.all.size > 0 %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name first</th>
+      <th>Name last</th>
+      <th>Email</th>
+      <th>Type</th>
+      <th>Slug</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @artists.each do |artist| %>
+      <tr>
+        <td><%= artist.name_first %></td>
+        <td><%= artist.name_last %></td>
+        <td><%= artist.email %></td>
+        <td><%= artist.category %></td>
+        <td><%= artist.slug %></td>
+        <td><%= link_to 'Show', artist_path(artist) %></td>
+        <td><%= link_to 'Edit', edit_artist_path(artist) %></td>
+        <td><%= link_to 'Destroy', artist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% end %>

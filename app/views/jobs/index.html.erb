@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-xs-6">
+    <h1 class="display-4">Jobs</h1>
+    <h6 class="text-muted">
+      <% if @jobs && @jobs.all.size > 0 %>
+          <%= @jobs.all.size %> records found
+      <% end %>
+    </h6>
+  </div>
+  <div class="col-xs-6 text-xs-right">
+    <%= link_to 'New Job', new_job_path, class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Job Number</th>
+    <th>Name</th>
+    <th>Category</th>
+    <th>Job Type</th>
+    <th>Job Status</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @jobs.each do |job| %>
+      <tr>
+        <td><%= job.job_number %></td>
+        <td><%= job.name %></td>
+        <td><%= job.category %></td>
+        <td><%= job.job_type_id %></td>
+        <td><%= job.job_status_id %></td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Edit buttons">
+            <%= link_to 'Show', job, class: "btn btn-secondary btn-sm" %>
+            <%= link_to 'Edit', edit_job_path(job), class: "btn btn-secondary btn-sm" %>
+            <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary btn-sm" %>
+          </div>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

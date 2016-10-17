@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-xs-6">
+    <h1 class="display-4">Vendors</h1>
+    <h6 class="text-muted">
+      <% if @vendors && @vendors.all.size > 0 %>
+          <%= @vendors.all.size %> records found
+      <% end %>
+    </h6>
+  </div>
+  <div class="col-xs-6 text-xs-right">
+    <%= link_to 'New Vendor', new_vendor_path, class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<!--SEARCH FORM-->
+<%= form_tag vendors_path, :method => 'get' do %>
+    <div class="input-group">
+      <%= text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search Vendors' %>
+      <span class="input-group-btn">
+        <%= submit_tag "Search", class: 'btn btn-outline-secondary' %>
+      </span>
+    </div>
+<% end %>
+
+<hr/>
+
+<!--SEARCH RESULTS-->
+<% if @vendors && @vendors.all.size > 0 %>
+
+<table class="table table-striped">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Website</th>
+      <th>Slug</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vendors.each do |vendor| %>
+      <tr>
+        <td><%= vendor.name %></td>
+        <td><%= vendor.category %></td>
+        <td><%= vendor.website %></td>
+        <td><%= vendor.slug %></td>
+        <td><%= link_to 'Show', vendor %></td>
+        <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>
+        <td><%= link_to 'Destroy', vendor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% end %>

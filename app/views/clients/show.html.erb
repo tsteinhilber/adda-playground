@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-sm-6 col-xs-12">
+    <h1 class="display-4"><%= @client.name %></h1>
+  </div>
+  <div class="col-sm-6 col-xs-12 text-xs-right">
+    <%= link_to 'Edit Client', edit_client_path(@client), class: 'btn btn-outline-secondary' %>
+    <%= link_to 'Back', clients_path, class: 'btn btn-outline-secondary' %>
+  </div>
+</div>
+
+<hr>
+
+<div class="row">
+
+  <!--left column-->
+  <div class="col-xs-12 col-sm-6">
+    <h2>Details</h2>
+    <hr>
+    <p>
+      <strong>Category:</strong>
+      <%= @client.category %>
+    </p>
+
+    <p>
+      <strong>Website:</strong>
+      <%= @client.website %>
+    </p>
+
+    <p>
+      <strong>Status:</strong>
+      <%= @client.status %>
+    </p>
+
+    <p>
+      <strong>Created user:</strong>
+      <%= @client.created_user %>
+    </p>
+
+    <p>
+      <strong>Updated user:</strong>
+      <%= @client.updated_user %>
+    </p>
+  </div>
+
+  <!--right column-->
+  <div class="col-xs-12 col-sm-6">
+    <h2>Contacts</h2>
+    <hr>
+    <%= render @client.contacts %>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div class="list-group-item list-group-item-action">
+  <div class="button-group pull-xs-right">
+    <%= link_to 'Create Job', new_job_path(contact: contact), class: 'btn btn-outline-primary btn-sm' if contact.status %>
+    <%= link_to 'Profile', contact_path(contact), class: "btn btn-outline-primary btn-sm" %>
+  </div>
+  <h5 class="list-group-item-heading"><%= contact.name_full %></h5>
+  <% if contact.client %>
+      <small><%= contact.client.name %></small> |
+  <% end %>
+  <% if contact.title %>
+      <small><%= contact.title %></small>
+      <br>
+  <% end %>
+  <% if contact.email %>
+      <small>
+        <a href="mailto:<%= contact.email %>"><%= contact.email %></a>
+      </small>
+  <% end %>
+</div>

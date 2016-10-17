@@ -1,0 +1,2 @@
+$("#artist-stats").html("<p class='results'><strong><%= @artists.all.size %></strong> records found</p>").hide().fadeIn(500);
+$("#artists-list").html("<%= escape_javascript( render @artists ) %><br/>").hide().fadeIn(500);

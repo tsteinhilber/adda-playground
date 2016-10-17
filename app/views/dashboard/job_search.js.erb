@@ -1,0 +1,2 @@
+$("#job-stats").html("<p class='results'><strong><%= @jobs.all.size %></strong> records found</p>").hide().fadeIn(500);
+$("#jobs-list").html("<%= escape_javascript( render @jobs ) %><br/>").hide().fadeIn(500);

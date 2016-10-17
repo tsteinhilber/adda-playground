@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  job_number: MyString
+  name: MyString
+  status: false
+  category: 
+  job_type: 
+  description: MyText
+  job_client: 
+  job_contact: 
+  estimate_client: 
+  estimate_contact: 
+  billing_client: 
+  billing_contact: 
+
+two:
+  job_number: MyString
+  name: MyString
+  status: false
+  category: 
+  job_type: 
+  description: MyText
+  job_client: 
+  job_contact: 
+  estimate_client: 
+  estimate_contact: 
+  billing_client: 
+  billing_contact: 

@@ -1,0 +1,53 @@
+<div class="container1">
+<%= form_for(contact) do |f| %>
+  <% if contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+      <ul>
+      <% contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="form-group row">
+      <%= f.label :name_first, class: "col-xs-2 col-form-label" %>
+      <div class="col-xs-10">
+        <%= f.text_field :name_first, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :name_last, class: "col-xs-2 col-form-label" %>
+      <div class="col-xs-10">
+        <%= f.text_field :name_last, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :title, class: "col-xs-2 col-form-label" %>
+      <div class="col-xs-10">
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :email, class: "col-xs-2 col-form-label" %>
+      <div class="col-xs-10">
+        <%= f.text_field :email, class: "form-control" %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :status, class: "col-xs-2 col-form-label" %>
+      <div class="col-xs-10">
+        <%= f.check_box :status %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="offset-sm-2 col-sm-10">
+        <%= f.submit class: 'btn btn-primary' %>
+      </div>
+    </div>
+
+  </div><!-- /container -->
+
+<% end %>

@@ -1,0 +1,42 @@
+<h1 class="display-4"><%= @contact.name_full %></h1>
+<h6><%= @contact.client.name %></h6>
+<br>
+<div class="row">
+  <!--left column-->
+  <div class="col-sm-6 col-xs-12">
+    <!--artist details-->
+    <table class="table">
+      <tr>
+        <th>First Name</th>
+        <td><%= @contact.name_first %></td>
+      </tr>
+      <tr>
+        <th>Last Name</th>
+        <td><%= @contact.name_last %></td>
+      </tr>
+      <tr>
+        <th>Title</th>
+        <td><%= @contact.title %></td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td><%= @contact.email %></td>
+      </tr>
+        <th>Client Company</th>
+        <td><%= link_to @contact.client.name, client_path(@contact.client.id) %></td>
+      <tr>
+      </tr>
+        <th>Status</th>
+        <td><%= @contact.status %></td>
+      <tr>
+    </table>
+  </div>
+
+  <!--right column-->
+  <div class="col-sm-6 col-xs-12">
+    <!--TODO: Add Contact Jobs-->
+  </div>
+</div><!-- /row -->
+
+<%= link_to 'Edit', edit_contact_path(@contact), class: 'btn btn-outline-secondary' %>
+<%= link_to 'Back', :back, class: 'btn btn-outline-secondary' %>

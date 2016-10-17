@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-xs-6">
+    <h1 class="display-4">Value Lists</h1>
+    <h6 class="text-muted">
+      <% if @value_lists && @value_lists.all.size > 0 %>
+          <%= @value_lists.all.size %> records found
+      <% end %>
+    </h6>
+  </div>
+  <div class="col-xs-6 text-xs-right">
+    <%= link_to 'New Value List', new_value_list_path, class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Item Count</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @value_lists.each do |value_list| %>
+      <tr>
+        <td><%= value_list.name %></td>
+        <td><%= value_list.value_items_count %></td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Edit buttons">
+            <%= link_to 'Show', value_list, class: "btn btn-secondary  btn-sm" %>
+            <%= link_to 'Edit', edit_value_list_path(value_list), class: "btn btn-secondary btn-sm" %>
+            <%= link_to 'Destroy', value_list, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary btn-sm" %>
+          </div>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

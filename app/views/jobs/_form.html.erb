@@ -1,0 +1,128 @@
+<%= form_for(job) do |f| %>
+<div class="row">
+  <div class="col-xs-12">
+      <% if job.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
+        <ul>
+        <% job.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+      <% end %>
+  </div>
+
+  <div class="col-sm-12">
+    <!--<h4>Team</h4>-->
+    <!--<p>teams current user is a member of</p>-->
+    <%= field_set_tag 'Choose Teams' do %>
+      <div class="btn-group" data-toggle="buttons">
+      <% current_user.teams.each do |team| %>
+        <label class="btn btn-outline-primary">
+          <%= check_box_tag "teams[]", team.id %> <%= team.name %>
+        </label>
+      <% end %>
+      </div>
+    <% end %>
+    <hr>
+  </div>
+
+  <div class="col-sm-6">
+
+    <div class="form-group row">
+      <%= f.label :job_number, class: 'col-sm-3 col-form-label' %>
+      <div class="col-sm-9">
+        <%= f.text_field :job_number, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :name, class: 'col-sm-3 col-form-label' %>
+      <div class="col-sm-9">
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :category_id, class: 'col-sm-3 col-form-label' %>
+      <div class="col-sm-9">
+        <%= f.collection_select(:category, @job_categories, :name, :name, {:prompt=>true}, {:class=>'form-control'}) %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :job_status_id, class: 'col-sm-3 col-form-label' %>
+      <div class="col-sm-9">
+        <%= f.text_field :job_status_id, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :active, class: 'col-sm-3 col-form-label' %>
+      <div class="col-sm-9">
+        <%= f.check_box :active, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :description, class: 'col-sm-3 col-form-label' %>
+      <div class="col-sm-9">
+        <%= f.text_area :description, class: 'form-control' %>
+      </div>
+    </div>
+
+  </div><!-- /col -->
+
+  <div class="col-sm-6">
+
+    <div class="form-group row">
+      <%= f.label :job_client_id, class: 'col-sm-3 col-form-label' %>
+      <div class="col-sm-9">
+        <% if @contact %>
+          <p class="form-control-static"><%= @contact.client.name %></p>
+          <%= f.text_field :job_client_id, value: @contact.client.id %>
+        <% end %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :job_contact_id, class: 'col-sm-3 col-form-label' %>
+      <div class="col-sm-9">
+        <% if @contact %>
+          <p class="form-control-static"><%= @contact.name_full %></p>
+        <%= f.text_field :job_contact_id, value: @contact.id %>
+        <% end %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :estimate_client_id, class: 'col-sm-3 col-form-label' %>
+      <div class="col-sm-9">
+        <%= f.text_field :estimate_client_id, class: 'form-control', value: @contact.client.id if @contact %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :estimate_contact_id, class: 'col-sm-3 col-form-label' %>
+      <div class="col-sm-9">
+        <%= f.text_field :estimate_contact_id, class: 'form-control', value: @contact.id if @contact %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :billing_client_id, class: 'col-sm-3 col-form-label' %>
+      <div class="col-sm-9">
+        <%= f.text_field :billing_client_id, class: 'form-control', value: @contact.client.id if @contact %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <%= f.label :billing_contact_id, class: 'col-sm-3 col-form-label' %>
+      <div class="col-sm-9">
+        <%= f.text_field :billing_contact_id, class: 'form-control', value: @contact.id if @contact %>
+      </div>
+    </div>
+
+  </div><!-- /col -->
+
+  <div class="col-sm-12">
+    <div class="form-group row">
+      <label class="col-sm-1"></label>
+      <div class="col-sm-9">
+        <%= f.submit class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div><!-- /col -->
+</div>
+<% end %>

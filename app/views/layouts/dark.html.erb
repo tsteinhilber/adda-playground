@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Adda</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="devise">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm hidden-xs-down"></div>
+        <div class="col-md-5 col-sm-8 col-xs-12 centered">
+          <!--<h1 class="display-1">ADDA</h1>-->
+          <%= image_tag 'adda-logo.svg', class: 'logo' %>
+        </div>
+        <div class="col-sm hidden-xs-down"></div>
+      </div>
+
+      <%= yield %>
+
+      <% if notice %>
+          <div class="toast-container">
+            <div class="toast-dark">
+              <%= notice %>
+            </div>
+          </div>
+      <% end %>
+
+      <% if alert %>
+          <div class="toast-container">
+            <div class="toast-info">
+              <%= alert %>
+            </div>
+          </div>
+      <% end %>
+
+    </div><!-- /container -->
+  </body>
+</html>

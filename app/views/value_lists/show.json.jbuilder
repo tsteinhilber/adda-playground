@@ -1,0 +1,1 @@
+json.partial! "value_lists/value_list", value_list: @value_list

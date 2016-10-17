@@ -1,0 +1,79 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-flex";
+
+.breadcrumb {
+  background-color: transparent;
+}
+
+.centered {
+  text-align: center;
+}
+
+.devise {
+  background-color: #2E2F30;
+  margin-top: 50px;
+}
+
+.devise-row {
+  padding-top: 2em;
+}
+
+.devise .card {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.devise h1 {
+  color: #CCCCCC;
+}
+
+.logo {
+  fill: red;
+  height: 75px;
+}
+
+.main-content {
+  margin-top: 20px;
+}
+
+.results {
+  color: #666666;
+  padding: 15px 0 0 5px;
+}
+
+.toast-container {
+  display: block;
+  position: fixed;
+  z-index: 10000;
+  right: 2%;
+  top: 3%;
+  max-width: 90%;
+}
+
+.toast-info {
+  background-color: rgba(217,237,247,0.75);
+  color: #31708f;
+  padding: 1em;
+  border-radius: 3px;
+}
+
+.toast-dark {
+  background-color: rgba(0,0,0,0.75);
+  color: white;
+  padding: 1em;
+  border-radius: 3px;
+}

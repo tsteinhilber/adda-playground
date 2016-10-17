@@ -1,0 +1,7 @@
+<h1 class="display-4"><%= @contact.name_full %></h1>
+<br>
+
+<%= render 'form', contact: @contact %>
+
+<%= link_to 'Show', @contact, class: "btn btn-outline-secondary" %>
+<%= link_to 'Back', contacts_path, class: "btn btn-outline-secondary" %>

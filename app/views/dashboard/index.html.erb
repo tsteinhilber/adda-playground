@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h1 class="display-4">Dashboard</h1>
+    <hr>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-xs-12 col-sm-12 col-md-4">
+    <%= render 'shared/contact_search', local_path: fetch_contacts_path %>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-4">
+  <% if @profile == 'staff' %>
+    <%= render 'shared/artist_search', btn_add: true, email: false, list: true, local_path: fetch_artists_path, btn_profile: false, search: true %>
+    <%= render 'user_artists' %>
+  <% end %>
+
+  <% if @profile == 'accounting' %>
+    <h3>My Accounting Chart</h3>
+    <%= image_tag 'pie-chart-icon.png' %>
+  <% end %>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-4">
+    <%= render 'shared/job_search', local_path: fetch_jobs_path %>
+    <%= render 'user_jobs' %>
+  </div>
+
+</div>

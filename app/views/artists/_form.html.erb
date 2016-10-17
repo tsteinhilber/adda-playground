@@ -1,0 +1,62 @@
+<%= form_for(artist) do |f| %>
+  <% if artist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(artist.errors.count, "error") %> prohibited this artist from being saved:</h2>
+
+      <ul>
+      <% artist.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <%= f.label :name_first, class: "mdl-textfield__label" %>
+      <%= f.text_field :name_first, class: "mdl-textfield__input" %>
+    </div>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <%= f.label :name_last, class: "mdl-textfield__label" %>
+      <%= f.text_field :name_last, class: "mdl-textfield__input" %>
+    </div>
+
+  <!--<div class="field">-->
+    <!--<%= f.label :name_first %>-->
+    <!--<%= f.text_field :name_first %>-->
+  <!--</div>-->
+
+  <!--<div class="field">-->
+    <!--<%= f.label :name_last %>-->
+    <!--<%= f.text_field :name_last %>-->
+  <!--</div>-->
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :website %>
+    <%= f.text_field :website %>
+  </div>
+
+  <div class="field">
+    <%= f.label :category %>
+    <%= f.text_field :category %>
+  </div>
+
+  <div class="field">
+    <%= f.label :active %>
+    <%= f.check_box :active %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_start %>
+    <%= f.date_select :date_start %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

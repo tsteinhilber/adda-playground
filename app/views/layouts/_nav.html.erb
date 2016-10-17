@@ -1,0 +1,36 @@
+<nav class="navbar navbar-light bg-faded">
+  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#CollapsingNavbar" aria-controls="CollapsingNavbar" aria-expanded="false" aria-label="Toggle navigation">
+    &#9776;
+  </button>
+  <div class="collapse navbar-toggleable-xs" id="CollapsingNavbar">
+    <%= link_to 'ADDA', root_path, class: 'navbar-brand' %>
+    <br class="hidden-sm-up">
+    <br class="hidden-sm-up">
+    <div class="nav navbar-nav">
+      <%= active_link_to 'Artists', artists_path, class: 'nav-item nav-link' %>
+      <%= active_link_to 'Clients', clients_path, class: 'nav-item nav-link' %>
+      <%= active_link_to 'Contacts', contacts_path, class: 'nav-item nav-link' %>
+      <%= active_link_to 'Jobs', jobs_path, class: 'nav-item nav-link' if current_user.try(:admin?) %>
+      <%= active_link_to 'Vendors', vendors_path, class: 'nav-item nav-link' %>
+      <%= active_link_to 'Teams', teams_path, class: 'nav-item nav-link' if current_user.try(:admin?) %>
+      <%= active_link_to 'Companies', companies_path, class: 'nav-item nav-link' if current_user.try(:admin?) %>
+      <%= active_link_to 'ValueLists', value_lists_path, class: 'nav-item nav-link' if current_user.try(:admin?) %>
+
+      <!--RIGHT SIDE DROPDOWN-->
+      <div class="pull-sm-right">
+
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.name_full %></a>
+          <div class="dropdown-menu">
+            <%= active_link_to 'Profile', edit_user_registration_path, class: 'dropdown-item' if user_signed_in? %>
+            <div class="dropdown-divider"></div>
+              <%= active_link_to 'Register', new_user_registration_path, class: 'dropdown-item' if !user_signed_in? %>
+              <%= active_link_to 'Login', new_user_session_path, class: 'dropdown-item' if !user_signed_in? %>
+              <%= active_link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'dropdown-item' if user_signed_in? %>
+          </div>
+        </div>
+
+      </div><!-- /right -->
+    </div>
+  </div>
+</nav>

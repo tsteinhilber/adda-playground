@@ -1,0 +1,15 @@
+<div class="list-group-item list-group-item-action">
+  <div class="button-group pull-xs-right">
+    <%= link_to 'Profile', artist_path(artist), class: "btn btn-outline-primary btn-sm" %>
+  </div>
+  <h5 class="list-group-item-heading"><%= artist.name_full %></h5>
+  <% if artist.category %>
+      <small><%= artist.category %></small>
+  <% end %>
+  <% if artist.email %>
+      <br>
+      <small>
+        <a href="mailto:<%= artist.email %>"><%= artist.email %></a>
+      </small>
+  <% end %>
+</div>

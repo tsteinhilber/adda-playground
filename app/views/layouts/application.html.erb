@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Adda</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render 'layouts/nav' %>
+    <div class="main-content container-fluid">
+
+      <%= yield %>
+
+      <% if notice %>
+      <div class="toast-container">
+        <div class="toast-dark">
+          <%= notice %>
+        </div>
+      </div>
+      <% end %>
+
+      <% if alert %>
+      <div class="toast-container">
+        <div class="toast-info">
+          <%= alert %>
+        </div>
+      </div>
+      <% end %>
+
+    </div><!-- /container -->
+  </body>
+</html>
