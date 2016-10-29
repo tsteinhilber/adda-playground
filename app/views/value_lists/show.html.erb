@@ -25,6 +25,10 @@
       <%= f.label :position %>
       <%= f.number_field :position, class: 'form-control' %>
     </div>
+    <div class="form-group">
+      <!--<%= f.label :value_list_id %>-->
+      <%= f.hidden_field :value_list_id, class: 'form-control' %>
+    </div>
     <%= f.submit class: 'btn btn-primary' %>
     <% end %>
   </div>
@@ -34,8 +38,8 @@
     <!--<h4>Values</h4>-->
     <div class="list-group">
       <div href="#" class="list-group-item disabled">Values</div>
-      <% @value_items.each do |item| %>
-          <%= link_to item.name, value_list_value_item_path(item), class: 'list-group-item' %>
+      <% @value_list.value_items.order(:position).each do |item| %>
+          <%= link_to item.name, value_list_value_item_path(@value_list, item), class: 'list-group-item' %>
       <% end %>
     </div>
   </div>

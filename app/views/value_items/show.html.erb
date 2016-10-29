@@ -16,4 +16,5 @@
 </p>
 
 <%= link_to 'Edit', edit_value_list_value_item_path(@value_item) %> |
-<%= link_to 'Back', :back %>
+<%= link_to 'Back', :back %> | 
+<%= link_to 'Destroy', value_list_path(@value_item), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary btn-sm" %>
