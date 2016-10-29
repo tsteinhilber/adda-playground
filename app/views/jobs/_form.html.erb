@@ -14,8 +14,6 @@
   </div>
 
   <div class="col-sm-12">
-    <!--<h4>Team</h4>-->
-    <!--<p>teams current user is a member of</p>-->
     <%= field_set_tag 'Choose Teams' do %>
       <div class="btn-group" data-toggle="buttons">
       <% current_user.teams.each do |team| %>
@@ -24,6 +22,12 @@
         </label>
       <% end %>
       </div>
+    <% end %>
+    <hr>
+  </div>
+
+  <div class="col-sm-12">
+    <%= field_set_tag 'Choose Artist' do %>
     <% end %>
     <hr>
   </div>
