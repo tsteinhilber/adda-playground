@@ -29,37 +29,32 @@
   </div>
 
   <div class="col-sm-6">
-
-    <div class="form-group row">
-      <%= f.label :job_number, class: 'col-sm-3 col-form-label' %>
-      <div class="col-sm-9">
-        <%= f.text_field :job_number, class: 'form-control' %>
-      </div>
-    </div>
+    
+    <!--Job Name-->
     <div class="form-group row">
       <%= f.label :name, class: 'col-sm-3 col-form-label' %>
       <div class="col-sm-9">
         <%= f.text_field :name, class: 'form-control' %>
       </div>
     </div>
+
+    <!--Job Category-->
     <div class="form-group row">
       <%= f.label :category_id, class: 'col-sm-3 col-form-label' %>
       <div class="col-sm-9">
         <%= f.collection_select(:category, @job_categories, :name, :name, {:prompt=>true}, {:class=>'form-control'}) %>
       </div>
     </div>
+
+    <!--Job Type-->
     <div class="form-group row">
-      <%= f.label :job_status_id, class: 'col-sm-3 col-form-label' %>
+      <%= f.label 'Type', class: 'col-sm-3 col-form-label' %>
       <div class="col-sm-9">
-        <%= f.text_field :job_status_id, class: 'form-control' %>
+        <%= f.text_field :job_type_id, class: 'form-control' %>
       </div>
     </div>
-    <div class="form-group row">
-      <%= f.label :active, class: 'col-sm-3 col-form-label' %>
-      <div class="col-sm-9">
-        <%= f.check_box :active, class: 'form-control' %>
-      </div>
-    </div>
+
+    <!--Job Description-->
     <div class="form-group row">
       <%= f.label :description, class: 'col-sm-3 col-form-label' %>
       <div class="col-sm-9">
@@ -71,46 +66,61 @@
 
   <div class="col-sm-6">
 
+    <!--Job Client-->
     <div class="form-group row">
       <%= f.label :job_client_id, class: 'col-sm-3 col-form-label' %>
       <div class="col-sm-9">
         <% if @contact %>
           <p class="form-control-static"><%= @contact.client.name %></p>
-          <%= f.text_field :job_client_id, value: @contact.client.id %>
+          <%= f.hidden_field :job_client_id, value: @contact.client.id %>
         <% end %>
       </div>
     </div>
+
+    <!--Job Contact-->
     <div class="form-group row">
       <%= f.label :job_contact_id, class: 'col-sm-3 col-form-label' %>
       <div class="col-sm-9">
         <% if @contact %>
           <p class="form-control-static"><%= @contact.name_full %></p>
-        <%= f.text_field :job_contact_id, value: @contact.id %>
+        <%= f.hidden_field :job_contact_id, value: @contact.id %>
         <% end %>
       </div>
     </div>
+
+    <!--Estimate Client-->
     <div class="form-group row">
       <%= f.label :estimate_client_id, class: 'col-sm-3 col-form-label' %>
       <div class="col-sm-9">
-        <%= f.text_field :estimate_client_id, class: 'form-control', value: @contact.client.id if @contact %>
+        <p class="form-control-static"><%= @contact.client.name %></p>
+        <%= f.hidden_field :estimate_client_id, class: 'form-control', value: @contact.client.id if @contact %>
       </div>
     </div>
+
+    <!--Estimate Contact-->
     <div class="form-group row">
       <%= f.label :estimate_contact_id, class: 'col-sm-3 col-form-label' %>
       <div class="col-sm-9">
-        <%= f.text_field :estimate_contact_id, class: 'form-control', value: @contact.id if @contact %>
+        <p class="form-control-static"><%= @contact.name_full %></p>
+        <%= f.hidden_field :estimate_contact_id, class: 'form-control', value: @contact.id if @contact %>
       </div>
     </div>
+
+    <!--Billing Client-->
     <div class="form-group row">
       <%= f.label :billing_client_id, class: 'col-sm-3 col-form-label' %>
       <div class="col-sm-9">
-        <%= f.text_field :billing_client_id, class: 'form-control', value: @contact.client.id if @contact %>
+        <p class="form-control-static"><%= @contact.client.name %></p>
+        <%= f.hidden_field :billing_client_id, class: 'form-control', value: @contact.client.id if @contact %>
       </div>
     </div>
+
+    <!--Billing Contact-->
     <div class="form-group row">
       <%= f.label :billing_contact_id, class: 'col-sm-3 col-form-label' %>
       <div class="col-sm-9">
-        <%= f.text_field :billing_contact_id, class: 'form-control', value: @contact.id if @contact %>
+        <p class="form-control-static"><%= @contact.name_full %></p>
+        <%= f.hidden_field :billing_contact_id, class: 'form-control', value: @contact.id if @contact %>
       </div>
     </div>
 

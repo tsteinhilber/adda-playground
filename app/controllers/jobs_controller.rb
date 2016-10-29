@@ -17,8 +17,9 @@ class JobsController < ApplicationController
 
   # GET /jobs/new
   def new
-    @job = Job.new
     @contact = Contact.includes(:client).find_by_slug(params[:contact])
+    @job = Job.new(:estimate_contact_id => @contact)
+    # @job = Job.new
   end
 
   # GET /jobs/1/edit
