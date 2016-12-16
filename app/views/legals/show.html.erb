@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @legal.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @legal.content %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= link_to @legal.company.name, company_path(@legal.company) %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @legal.active %>
+</p>
+
+<%= link_to 'Edit', edit_legal_path(@legal) %> |
+<%= link_to 'Back', legals_path %>

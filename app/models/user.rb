@@ -16,7 +16,7 @@ class User < ApplicationRecord
   end
 
   def jobs
-    Job.joins(:teams).where('jobs_teams.team_id' => self.teams).distinct.order(:job_number)
+    Job.joins(:teams).where('jobs_teams.team_id' => self.teams).distinct.order(job_number: :desc)
   end
 
   def admin?

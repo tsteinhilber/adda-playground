@@ -16,7 +16,7 @@ class Client < ApplicationRecord
 
   def self.search(search)
     if search && search != ""
-      where(["slug LIKE ?", "%#{search.downcase}%"]).order(:name)
+      where(["name LIKE ?", "%#{search}%"]).order(:name)
     end
   end
 

@@ -1,0 +1,45 @@
+<%= form_for(legal) do |f| %>
+  <% if legal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(legal.errors.count, "error") %> prohibited this legal from being saved:</h2>
+
+      <ul>
+      <% legal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group row">
+    <%= f.label :title, class: 'col-xs-2 col-form-label' %>
+    <div class="col-xs-10">
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :content, class: 'col-xs-2 col-form-label' %>
+    <div class="col-xs-10">
+      <%= f.text_area :content, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :company_id, class: 'col-xs-2 col-form-label' %>
+    <div class="col-xs-10">
+      <%= f.collection_select(:company_id, Company.all.order(:name), :id, :name, {:prompt=>true}, {:class=>'form-control'}) %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :active, class: 'col-xs-2 col-form-label' %>
+    <div class="col-xs-10">
+      <%= f.check_box :active, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class:'btn btn-primary' %>
+  </div>
+<% end %>

@@ -23,7 +23,7 @@
         <td><%= @contact.email %></td>
       </tr>
         <th>Client Company</th>
-        <td><%= link_to @contact.client.name, client_path(@contact.client.id) %></td>
+        <td><%= link_to @contact.client.name, client_path(@contact.client.slug) %></td>
       <tr>
       </tr>
         <th>Status</th>

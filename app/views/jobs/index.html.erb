@@ -18,7 +18,6 @@
     <th>Job Number</th>
     <th>Name</th>
     <th>Category</th>
-    <th>Job Type</th>
     <th>Job Status</th>
     <th></th>
   </tr>
@@ -30,8 +29,7 @@
         <td><%= job.job_number %></td>
         <td><%= job.name %></td>
         <td><%= job.category %></td>
-        <td><%= job.job_type_id %></td>
-        <td><%= job.job_status_id %></td>
+        <td><%= job.status %></td>
         <td>
           <div class="btn-group" role="group" aria-label="Edit buttons">
             <%= link_to 'Show', job, class: "btn btn-secondary btn-sm" %>

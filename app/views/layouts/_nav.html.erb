@@ -14,6 +14,7 @@
       <%= active_link_to 'Vendors', vendors_path, class: 'nav-item nav-link' %>
       <%= active_link_to 'Teams', teams_path, class: 'nav-item nav-link' if current_user.try(:admin?) %>
       <%= active_link_to 'Companies', companies_path, class: 'nav-item nav-link' if current_user.try(:admin?) %>
+      <%= active_link_to 'Legals', legals_path, class: 'nav-item nav-link' if current_user.try(:admin?) %>
       <%= active_link_to 'ValueLists', value_lists_path, class: 'nav-item nav-link' if current_user.try(:admin?) %>
 
       <!--RIGHT SIDE DROPDOWN-->

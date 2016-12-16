@@ -9,8 +9,10 @@ class Job < ApplicationRecord
   belongs_to :billing_client, class_name: "Client", foreign_key: "billing_client_id"
   belongs_to :billing_contact, class_name: "Contact", foreign_key: 'billing_contact_id'
 
+  belongs_to :artist
   has_and_belongs_to_many :teams
 
+  validates_presence_of :artist_id, :on => :create, :message => "can't be blank"
   validates_presence_of :job_number, :on => :create, :message => "can't be blank"
 
 

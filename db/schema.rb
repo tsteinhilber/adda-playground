@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161013154359) do
+ActiveRecord::Schema.define(version: 20161107184548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 20161013154359) do
     t.string   "job_number",          limit: 100
     t.string   "name",                limit: 200
     t.boolean  "active",                          default: true
-    t.integer  "job_status_id"
+    t.string   "status",              limit: 100
     t.integer  "job_type_id"
     t.text     "description"
     t.integer  "job_client_id"
@@ -105,7 +105,9 @@ ActiveRecord::Schema.define(version: 20161013154359) do
     t.datetime "created_at",                                     null: false
     t.datetime "updated_at",                                     null: false
     t.string   "category",            limit: 100
+    t.integer  "artist_id"
     t.index ["active"], name: "index_jobs_on_active", using: :btree
+    t.index ["artist_id"], name: "index_jobs_on_artist_id", using: :btree
     t.index ["billing_client_id"], name: "index_jobs_on_billing_client_id", using: :btree
     t.index ["billing_contact_id"], name: "index_jobs_on_billing_contact_id", using: :btree
     t.index ["estimate_client_id"], name: "index_jobs_on_estimate_client_id", using: :btree
@@ -113,13 +115,25 @@ ActiveRecord::Schema.define(version: 20161013154359) do
     t.index ["job_client_id"], name: "index_jobs_on_job_client_id", using: :btree
     t.index ["job_contact_id"], name: "index_jobs_on_job_contact_id", using: :btree
     t.index ["job_number"], name: "index_jobs_on_job_number", using: :btree
-    t.index ["job_status_id"], name: "index_jobs_on_job_status_id", using: :btree
     t.index ["job_type_id"], name: "index_jobs_on_job_type_id", using: :btree
+    t.index ["status"], name: "index_jobs_on_status", using: :btree
   end
 
   create_table "jobs_teams", id: false, force: :cascade do |t|
     t.integer "job_id",  null: false
     t.integer "team_id", null: false
+  end
+
+  create_table "legals", force: :cascade do |t|
+    t.string   "title",      limit: 100
+    t.text     "content"
+    t.integer  "company_id"
+    t.boolean  "active",                 default: true
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.index ["active"], name: "index_legals_on_active", using: :btree
+    t.index ["company_id"], name: "index_legals_on_company_id", using: :btree
+    t.index ["title"], name: "index_legals_on_title", using: :btree
   end
 
   create_table "memberships", force: :cascade do |t|

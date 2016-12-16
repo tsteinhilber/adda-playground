@@ -5,7 +5,7 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.all
+    @jobs = Job.all.order(job_number: :desc)
     # @jobs = current_user.jobs
   end
 
@@ -87,6 +87,6 @@ class JobsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_params
-      params.require(:job).permit(:job_number, :name, :job_status, :category, :job_type, :description, :job_client_id, :job_contact_id, :estimate_client_id, :estimate_contact_id, :billing_client_id, :billing_contact_id, :active)
+      params.require(:job).permit(:artist_id, :job_number, :name, :status, :category, :job_type, :description, :job_client_id, :job_contact_id, :estimate_client_id, :estimate_contact_id, :billing_client_id, :billing_contact_id, :active)
     end
 end

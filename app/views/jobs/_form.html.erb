@@ -12,6 +12,15 @@
       </div>
       <% end %>
   </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= field_set_tag 'Choose Artist' do %>
+      <%= f.collection_select(:artist_id, current_user.artists, :id, :name_full, {:prompt=>true}, {:class=>'form-control'}) %>
+    <% end %>
+    <hr>
+  </div>
 
   <div class="col-sm-12">
     <%= field_set_tag 'Choose Teams' do %>
@@ -26,13 +35,11 @@
     <hr>
   </div>
 
-  <div class="col-sm-12">
-    <%= field_set_tag 'Choose Artist' do %>
-    <% end %>
-    <hr>
-  </div>
+</div><!-- /row -->
 
-  <div class="col-sm-6">
+<div class="row">
+  <div class="col-sm-12">
+    <%= field_set_tag 'Job Details' do %>
     
     <!--Job Name-->
     <div class="form-group row">
@@ -65,10 +72,18 @@
         <%= f.text_area :description, class: 'form-control' %>
       </div>
     </div>
-
+    <% end %>
+    <hr>
   </div><!-- /col -->
 
-  <div class="col-sm-6">
+  <div class="col-sm-12">
+    <%= field_set_tag 'Estimate Details' do %>
+    <% end %>
+    <hr>
+  </div><!-- /col -->
+
+  <div class="col-sm-12">
+    <%= field_set_tag 'Job Contacts' do %>
 
     <!--Job Client-->
     <div class="form-group row">
@@ -96,7 +111,7 @@
     <div class="form-group row">
       <%= f.label :estimate_client_id, class: 'col-sm-3 col-form-label' %>
       <div class="col-sm-9">
-        <p class="form-control-static"><%= @contact.client.name %></p>
+        <p class="form-control-static"><%= @contact.client.name if @contact %></p>
         <%= f.hidden_field :estimate_client_id, class: 'form-control', value: @contact.client.id if @contact %>
       </div>
     </div>
@@ -105,7 +120,7 @@
     <div class="form-group row">
       <%= f.label :estimate_contact_id, class: 'col-sm-3 col-form-label' %>
       <div class="col-sm-9">
-        <p class="form-control-static"><%= @contact.name_full %></p>
+        <p class="form-control-static"><%= @contact.name_full if @contact %></p>
         <%= f.hidden_field :estimate_contact_id, class: 'form-control', value: @contact.id if @contact %>
       </div>
     </div>
@@ -114,7 +129,7 @@
     <div class="form-group row">
       <%= f.label :billing_client_id, class: 'col-sm-3 col-form-label' %>
       <div class="col-sm-9">
-        <p class="form-control-static"><%= @contact.client.name %></p>
+        <p class="form-control-static"><%= @contact.client.name if @contact %></p>
         <%= f.hidden_field :billing_client_id, class: 'form-control', value: @contact.client.id if @contact %>
       </div>
     </div>
@@ -123,20 +138,21 @@
     <div class="form-group row">
       <%= f.label :billing_contact_id, class: 'col-sm-3 col-form-label' %>
       <div class="col-sm-9">
-        <p class="form-control-static"><%= @contact.name_full %></p>
+        <p class="form-control-static"><%= @contact.name_full if @contact %></p>
         <%= f.hidden_field :billing_contact_id, class: 'form-control', value: @contact.id if @contact %>
       </div>
     </div>
 
+    <% end %>
   </div><!-- /col -->
 
   <div class="col-sm-12">
     <div class="form-group row">
-      <label class="col-sm-1"></label>
+      <!--<label class="col-sm-3"></label>-->
       <div class="col-sm-9">
         <%= f.submit class: 'btn btn-primary' %>
       </div>
     </div>
   </div><!-- /col -->
-</div>
+</div><!-- /row -->
 <% end %>

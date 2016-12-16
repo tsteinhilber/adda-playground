@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-xs-6">
+    <h1 class="display-4">Legals</h1>
+    <h6 class="text-muted">
+      <% if @legals && @legals.all.size > 0 %>
+          <%= @legals.all.size %> records found
+      <% end %>
+    </h6>
+  </div>
+  <div class="col-xs-6 text-xs-right">
+    <%= link_to 'New Legal', new_legal_path, class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Company</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @legals.each do |legal| %>
+      <tr>
+        <td><%= legal.title %></td>
+        <td><%= legal.company.name %></td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Edit buttons">
+            <%= link_to 'Show', legal, class: "btn btn-secondary  btn-sm" %>
+            <%= link_to 'Edit', edit_legal_path(legal), class: "btn btn-secondary btn-sm" %>
+            <%= link_to 'Destroy', legal, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary btn-sm" %>
+          </div>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :legals
   get 'dashboard', to: 'dashboard#index'
   get 'fetch_contacts' => 'dashboard#contact_search', as: 'fetch_contacts'
   get 'fetch_artists' => 'dashboard#artist_search', as: 'fetch_artists'
